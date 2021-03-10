@@ -79,15 +79,17 @@ const Login = (props) => {
   return (
     <>
       <section className="login">
+        <h2 className="login__title">Crea tu cuenta</h2>
         <form className="login__form">
           <label className="login__form__label" htmlFor="userName">
-            Usuario:
+            Nombre de usuario:
           </label>
           <input
             className="login__form__input"
             type="text"
             name="userName"
             id="userName"
+            placeholder="Usuario"
             onChange={handleUser}
           />
           <p className="login__form__message">{userMessage}</p>
@@ -100,10 +102,11 @@ const Login = (props) => {
             name="userPassword"
             id="userPassword"
             minlength="7"
+            placeholder="Contraseña"
             onChange={handlePassword}
           />
           <label className="login__form__label" htmlFor="userPassword">
-            Confirmar contraseña:
+            Confirma tu contraseña:
           </label>
           <input
             className="login__form__input"
@@ -111,18 +114,17 @@ const Login = (props) => {
             name="userPassword"
             id="userPassword"
             minlength="7"
+            placeholder="Repite tu contraseña"
             onChange={handleConfirmPassword}
           />
-          <input type="submit" value="Sign up" />
+          <ul className="login__form__list">
+            <li className={passHashtag}>Debe contener #</li>
+            <li className={passUpper}>Debe contener mayúsculas</li>
+            <li className={passLenght}>Debe tener más de 7 caracteres</li>
+            <li className={passConfirm}>Las contraseñas deben coincidir</li>
+          </ul>
+          <button className="login__form__button">Regístrate</button>
         </form>
-        <ul>
-          <li className={passHashtag}>Debe contener #</li>
-          <li className={passUpper}>Debe contener mayúsculas</li>
-          <li className={passLenght}>Debe tener más de 7 caracteres</li>
-          <li className={passConfirm}>
-            La confirmación de contraseña debe coincidir
-          </li>
-        </ul>
       </section>
     </>
   );

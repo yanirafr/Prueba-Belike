@@ -6,7 +6,11 @@ import Login from "./Login/Login.js";
 const App = () => {
   return (
     <>
-      <Login />
+      <header></header>
+      <main>
+        <Login />
+      </main>
+      <footer></footer>
     </>
   );
 };
