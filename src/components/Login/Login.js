@@ -153,7 +153,7 @@ const Login = (props) => {
             <li className={passLenght}>Debe tener más de 7 caracteres</li>
             <li className={passConfirm}>Las contraseñas deben coincidir</li>
           </ul>
-          <Link to="/home">
+          <Link to="/home" title="Regístrate">
             <button
               className={"login__form__button " + enableSubmit}
               disabled={enableSubmit}

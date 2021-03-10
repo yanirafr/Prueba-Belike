@@ -16,7 +16,7 @@ const App = () => {
     <>
       <header className="header">
         <h1 className="header__title">Belike</h1>
-        <Link to="/">
+        <Link to="/" title="Belike">
           <img
             className="header__image"
             src="https://www.belikesoftware.com/wp-content/uploads/2018/09/belikelogo_.png"
