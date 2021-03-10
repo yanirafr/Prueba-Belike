@@ -1,0 +1,20 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  &__title {
+    color: white;
+    font-size: 30px;
+    margin: 30px 0;
+    text-transform: uppercase;
+  }
+  &__news {
+    background-color: white;
+    margin: 0 50px;
+    padding: 30px;
+    &__title {
+      margin-bottom: 30px;
+      color: rgb(19, 33, 70);
+    }
+  }
+}

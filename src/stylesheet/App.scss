@@ -13,3 +13,18 @@ body {
   background-color: #12445d;
   font-family: "Open Sans", sans-serif;
 }
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 30px;
+  background-color: white;
+  &__title {
+    display: none;
+  }
+  &__image {
+    height: 40px;
+    margin-left: 20px;
+  }
+}

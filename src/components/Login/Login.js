@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "./login.scss";
+import { Link } from "react-router-dom";
 
 const Login = (props) => {
   //State
@@ -12,6 +13,7 @@ const Login = (props) => {
   const [passLenght, setPassLenght] = useState("");
   const [passHashtag, setPasshashtag] = useState("");
   const [passUpper, passSetUpper] = useState("");
+  const [enableSubmit, setEnableSubmit] = useState("");
 
   // User
   const handleUser = (ev) => {
@@ -21,11 +23,11 @@ const Login = (props) => {
 
     if (!validUser) {
       setUserMessage("");
+      setUserName(user);
     } else {
       setUserMessage(
-        "El nombre de usuario no puede contener caracteres especiales"
+        "! El nombre de usuario no puede contener caracteres especiales"
       );
-      setUserName(user);
     }
   };
 
@@ -75,6 +77,34 @@ const Login = (props) => {
     }
   };
 
+  useEffect(() => {
+    if (
+      passConfirm === "correct" &&
+      passLenght === "correct" &&
+      passHashtag === "correct" &&
+      passUpper === "correct" &&
+      userMessage === "" &&
+      userName !== ""
+    ) {
+      setEnableSubmit("");
+    } else {
+      setEnableSubmit("disabled");
+    }
+  });
+
+  const handleButton = () => {
+    if (
+      passConfirm === "correct" &&
+      passLenght === "correct" &&
+      passHashtag === "correct" &&
+      passUpper === "correct" &&
+      userMessage === "" &&
+      userName !== ""
+    ) {
+      props.sendUserName(userName);
+    }
+  };
+
   // Return
   return (
     <>
@@ -101,19 +131,19 @@ const Login = (props) => {
             type="password"
             name="userPassword"
             id="userPassword"
-            minlength="7"
+            minLength="7"
             placeholder="Contraseña"
             onChange={handlePassword}
           />
-          <label className="login__form__label" htmlFor="userPassword">
+          <label className="login__form__label" htmlFor="userPasswordConfirm">
             Confirma tu contraseña:
           </label>
           <input
             className="login__form__input"
             type="password"
-            name="userPassword"
-            id="userPassword"
-            minlength="7"
+            name="userPasswordConfirm"
+            id="userPasswordConfirm"
+            minLength="7"
             placeholder="Repite tu contraseña"
             onChange={handleConfirmPassword}
           />
@@ -123,7 +153,15 @@ const Login = (props) => {
             <li className={passLenght}>Debe tener más de 7 caracteres</li>
             <li className={passConfirm}>Las contraseñas deben coincidir</li>
           </ul>
-          <button className="login__form__button">Regístrate</button>
+          <Link to="/home">
+            <button
+              className={"login__form__button " + enableSubmit}
+              disabled={enableSubmit}
+              onClick={handleButton}
+            >
+              Regístrate
+            </button>
+          </Link>
         </form>
       </section>
     </>
