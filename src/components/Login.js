@@ -2,9 +2,29 @@ import { useState, useEffect } from "react";
 
 const Login = (props) => {
   //State
-  const [passLenght, setPassLenght] = useState();
+  const [password, setPassword] = useState("");
+  const [userName, setUserName] = useState("");
+  const [userMessage, setUserMessage] = useState("");
 
-  //Return
+  // User
+  const handleUser = (ev) => {
+    const user = ev.target.value;
+    const regex = /[^A-Za-z0-9]/;
+    const validUser = regex.test(user);
+
+    if (!validUser) {
+      setUserMessage("Bien");
+    } else {
+      setUserMessage("Mal");
+    }
+  };
+
+  // Password
+  const handlePassword = (ev) => {
+    const value = ev.target.value;
+  };
+
+  // Return
   return (
     <>
       <section className="login">
@@ -17,7 +37,9 @@ const Login = (props) => {
             type="text"
             name="userName"
             id="userName"
+            onChange={handleUser}
           />
+          <p className="login__form__message">{userMessage}</p>
           <label className="login__form__label" htmlFor="userPassword">
             Contraseña:
           </label>
@@ -27,6 +49,7 @@ const Login = (props) => {
             name="userPassword"
             id="userPassword"
             minlength="7"
+            onChange={handlePassword}
           />
           <label className="login__form__label" htmlFor="userPassword">
             Confirmar contraseña:
